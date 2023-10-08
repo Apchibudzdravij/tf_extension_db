@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url = "file:../db/src.db"
+}
+
+model Artist {
+    id Int @id @default(autoincrement())
+    name String?
+    url String @unique
+    location String?
+    summary String?
+    skills Skill[]
+    software Software[]
+    vacancies Vacancy[]
+    contacts Contact[]
+    comments Comment[]
+}
+
+model Contact {
+    id Int @id @default(autoincrement())
+    url String @unique
+    artist Artist @relation(fields: [artistId], references: [id])
+    artistId Int
+}
+
+model Skill {
+    id Int @id @default(autoincrement())
+    name String @unique
+    artists Artist[]
+}
+
+model Software {
+    id Int @id @default(autoincrement())
+    name String @unique
+    artists Artist[]
+}
+
+model Vacancy {
+    id Int @id @default(autoincrement())
+    name String @unique
+    artists Artist[]
+}
+
+model Comment {
+    id Int @id @default(autoincrement())
+    text String @unique
+    artist Artist @relation(fields: [artistId], references: [id])
+    artistId Int
+}
