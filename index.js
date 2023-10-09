@@ -251,6 +251,7 @@ router.post('/download', async (ctx) => {
                 software: true
             }
         });
+        console.log(JSON.stringify(result.artists[0]));
         ctx.body = {
             message: 'accepted',
             data: result
