@@ -1,6 +1,7 @@
 const http = require('http');
 const Koa = require('koa');
 const Router = require('@koa/router');
+const cors = require('@koa/cors');
 const Logger = require('koa-logger');
 const {
     koaBody
@@ -16,6 +17,11 @@ const httpServer = http.createServer(app.callback());
 const port = 7000;
 
 app.use(koaBody());
+
+const corsoptions = {
+    origin: '*'
+};
+app.use(cors(corsoptions));
 
 app.use(async (ctx, next) => {
     try {
