@@ -251,7 +251,6 @@ router.post('/download', async (ctx) => {
                 software: true
             }
         });
-        console.log(JSON.stringify(result.artists[0]));
         ctx.body = {
             message: 'accepted',
             data: result
@@ -269,5 +268,5 @@ app.use(Logger())
     .use(router.allowedMethods());
 
 httpServer.listen(port, () => {
-    console.log(`HTTP Server started at http://[${httpServer.address().address}]:${httpServer.address().port}`);
+    console.log(`HTTP Server started!`);
 });
