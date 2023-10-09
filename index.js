@@ -181,7 +181,7 @@ router.post('/upload', async (ctx) => {
                     contactSet.push(newContact.id);
                 }
             }
-            let updatedArtist = await prisma.artist.update({
+            await prisma.artist.update({
                 where: {
                     id: artistIbDB.id
                 },
@@ -214,7 +214,6 @@ router.post('/upload', async (ctx) => {
                     software: true
                 }
             });
-            console.log(JSON.stringify(updatedArtist));
             console.log('[INFO] info sent to database successfully');
             ctx.body = {
                 message: 'artist achieved'
