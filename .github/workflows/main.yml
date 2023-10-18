@@ -7,6 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send HTTP request
-        uses: Apchibudzdravij/tf_test_db@main
+        uses: Tyrrrz/action-http-request@1.1.2
         with:
           url: https://tf-extension-assistant.onrender.com
